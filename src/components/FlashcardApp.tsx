@@ -84,6 +84,11 @@ const sections = [
         answer:
           "For at håndtere beskeder der ikke kan processeres korrekt og kræver manuel intervention.",
       },
+      {
+        question: "Hvad er formålet med Dead Letter Channel?",
+        answer:
+          "At opbevare beskeder som messaging systemet ikke kunne levere, så de kan undersøges senere.",
+      },
     ],
   },
   {
@@ -100,9 +105,23 @@ const sections = [
           "At lade en requestor identificere hvilken request en modtaget reply hører til.",
       },
       {
-        question: "Hvorfor bruges Message Expiration?",
+        question: "Hvad er formålet med Message Expiration?",
         answer:
           "For at indikere hvornår en besked skal betragtes som forældet og ikke bør processeres.",
+      },
+      {
+        question: "Hvad er et Document Message?",
+        answer:
+          "En besked der bruges til at overføre data mellem applikationer uden at specificere hvordan data skal behandles.",
+      },
+      {
+        question: "Hvordan bruges Return Address pattern?",
+        answer: "Det fortæller en responder hvor den skal sende sit svar hen.",
+      },
+      {
+        question: "Hvad er formålet med Message Sequence?",
+        answer:
+          "At transmittere en vilkårlig stor mængde data ved at opdele den i en sekvens af relaterede beskeder.",
       },
     ],
   },
@@ -124,6 +143,21 @@ const sections = [
         answer:
           "Den reducerer datamængden i beskeder uden at miste information ved at gemme data eksternt.",
       },
+      {
+        question: "Hvad er formålet med Envelope Wrapper?",
+        answer:
+          "At tillade eksisterende systemer at deltage i message udveksling der har specifikke krav til beskedformat, som f.eks. header felter eller kryptering.",
+      },
+      {
+        question: "Hvad er formålet med Content Filter?",
+        answer:
+          "At simplificere håndteringen af store beskeder når man kun er interesseret i få data elementer.",
+      },
+      {
+        question: "Hvad er formålet med en Normalizer?",
+        answer:
+          "At håndtere beskeder der er semantisk ækvivalente men ankommer i forskellige formater.",
+      },
     ],
   },
   {
@@ -143,6 +177,12 @@ const sections = [
         question: "Hvad er Remote Procedure Invocation?",
         answer:
           "En integrationsstil hvor en applikation eksponerer nogle af sine procedurer så andre applikationer kan kalde dem remotely.",
+      },
+      {
+        question:
+          "Hvad er den grundlæggende ide bag Messaging som integration style?",
+        answer:
+          "At applikationer kan kommunikere ved at sende beskeder til hinanden gennem message channels, hvilket giver løs kobling og asynkron kommunikation.",
       },
     ],
   },
@@ -188,6 +228,157 @@ const sections = [
           "Hvorfor er mocking særligt relevant i unit testing af mikroservices?",
         answer:
           "For at kunne teste en service isoleret uden afhængigheder til andre services.",
+      },
+    ],
+  },
+  {
+    title: "Messaging Systems",
+    cards: [
+      {
+        question: "Hvad er hovedformålet med Pipes and Filters pattern?",
+        answer:
+          "At muliggøre kompleks message processing mens man bevarer uafhængighed og fleksibilitet mellem processing steps.",
+      },
+      {
+        question: "Hvad er formålet med en Message Translator?",
+        answer:
+          "At muliggøre kommunikation mellem systemer der bruger forskellige dataformater ved at oversætte mellem formaterne.",
+      },
+      {
+        question: "Hvad er en Message Endpoint's primære funktion?",
+        answer:
+          "At forbinde en applikation til en messaging channel så den kan sende og modtage beskeder.",
+      },
+    ],
+  },
+  {
+    title: "Messaging Channels",
+    cards: [
+      {
+        question: "Hvad er formålet med Guaranteed Delivery?",
+        answer:
+          "At sikre at en besked bliver leveret selv hvis messaging systemet fejler midlertidigt.",
+      },
+      {
+        question: "Hvad er formålet med en Channel Adapter?",
+        answer:
+          "At forbinde en applikation til messaging systemet så den kan sende og modtage beskeder uden at kende til messaging protokollen.",
+      },
+      {
+        question: "Hvad er hovedformålet med en Message Bus?",
+        answer:
+          "At skabe en arkitektur hvor separate applikationer kan arbejde sammen på en løst koblet måde, så applikationer nemt kan tilføjes eller fjernes.",
+      },
+      {
+        question: "Hvad er formålet med en Messaging Bridge?",
+        answer:
+          "At forbinde multiple messaging systemer så beskeder der er tilgængelige i ét system også bliver tilgængelige i de andre.",
+      },
+    ],
+  },
+  {
+    title: "Message Routing Patterns",
+    cards: [
+      {
+        question: "Hvad er formålet med Recipient List?",
+        answer:
+          "At route en besked til en dynamisk specificeret liste af modtagere.",
+      },
+      {
+        question: "Hvordan fungerer en Splitter?",
+        answer:
+          "Den opdeler en besked der indeholder multiple elementer, så hvert element kan processeres forskelligt.",
+      },
+      {
+        question: "Hvad er formålet med en Aggregator?",
+        answer:
+          "At kombinere resultaterne af individuelle, men relaterede beskeder så de kan processeres som en helhed.",
+      },
+      {
+        question: "Hvad løser en Resequencer?",
+        answer:
+          "At få en strøm af relaterede men ude-af-sekvens beskeder tilbage i den korrekte rækkefølge.",
+      },
+      {
+        question: "Hvad er formålet med Scatter-Gather pattern?",
+        answer:
+          "At vedligeholde message flow når en besked skal sendes til multiple modtagere, der hver især kan sende svar tilbage.",
+      },
+      {
+        question: "Hvordan fungerer Routing Slip pattern?",
+        answer:
+          "Det router en besked gennem en serie af processing steps, hvor sekvensen ikke er kendt på design-tidspunktet og kan variere for hver besked.",
+      },
+    ],
+  },
+  {
+    title: "Messaging Endpoints",
+    cards: [
+      {
+        question: "Hvad er formålet med en Messaging Gateway?",
+        answer:
+          "At indkapsle adgangen til messaging systemet fra resten af applikationen.",
+      },
+      {
+        question: "Hvad gør en Messaging Mapper?",
+        answer:
+          "Den flytter data mellem domæne objekter og messaging infrastrukturen mens de holdes uafhængige af hinanden.",
+      },
+      {
+        question: "Hvad er en Transactional Client?",
+        answer:
+          "En client der kan kontrollere sine transaktioner med messaging systemet.",
+      },
+      {
+        question:
+          "Hvad er forskellen mellem Polling Consumer og Event-Driven Consumer?",
+        answer:
+          "Polling Consumer konsumerer beskeder når applikationen er klar, mens Event-Driven Consumer automatisk konsumerer beskeder så snart de bliver tilgængelige.",
+      },
+      {
+        question: "Hvordan fungerer Competing Consumers pattern?",
+        answer:
+          "Det tillader en messaging client at processere multiple beskeder concurrent ved at have flere consumers der konkurrerer om beskeder fra samme channel.",
+      },
+      {
+        question: "Hvad er formålet med en Message Dispatcher?",
+        answer:
+          "At koordinere message processing mellem multiple consumers på en enkelt channel.",
+      },
+      {
+        question: "Hvordan fungerer en Selective Consumer?",
+        answer:
+          "Den tillader en message consumer at vælge hvilke beskeder den ønsker at modtage baseret på specifikke kriterier.",
+      },
+      {
+        question: "Hvad er formålet med Durable Subscriber?",
+        answer:
+          "At sikre at en subscriber ikke går glip af beskeder mens den ikke lytter efter dem.",
+      },
+    ],
+  },
+  {
+    title: "Avancerede Messaging Patterns",
+    cards: [
+      {
+        question: "Hvad er formålet med Process Manager pattern?",
+        answer:
+          "At route beskeder gennem multiple processing steps når de nødvendige steps måske ikke er kendt på design-tidspunktet og ikke nødvendigvis er sekventielle.",
+      },
+      {
+        question: "Hvordan fungerer Composed Message Processor pattern?",
+        answer:
+          "Den vedligeholder det overordnede message flow når en besked består af multiple elementer der hver kræver forskellig processing.",
+      },
+      {
+        question: "Hvad er hovedformålet med Message Broker pattern?",
+        answer:
+          "At dekoble beskedens destination fra afsenderen og vedligeholde central kontrol over message flow.",
+      },
+      {
+        question: "Hvad er formålet med Dynamic Router?",
+        answer:
+          "At undgå at routeren er afhængig af alle mulige destinationer mens den bevarer sin effektivitet.",
       },
     ],
   },
